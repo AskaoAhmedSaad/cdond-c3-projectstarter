@@ -165,14 +165,19 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: cimg/base:stable
+      - image: python:3.9.0-alpine3.12
     steps:
       - checkout
-      - install_ansible
       - add_ssh_keys:
           fingerprints: ["5a:d5:48:85:14:56:b7:fd:9d:a6:f1:cc:31:43:07:50"]
       - attach_workspace:
           at: ~/
+      - run:
+          name: Install dependencies
+          working_directory: ./.circleci/ansible
+          command: |
+            apk add --update ansible
+            ansible --version
       - run:
           name: Configure server
           working_directory: ./.circleci/ansible
