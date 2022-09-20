@@ -164,7 +164,8 @@ jobs:
       - destroy-environment     
 
   configure-infrastructure:
-    executor: python:3.9.0-alpine
+    docker:
+      - image: cimg/python:3.10.7
     steps:
       - checkout
       - add_ssh_keys:
