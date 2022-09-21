@@ -160,19 +160,20 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: python:3.7-alpine3.16
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["5a:d5:48:85:14:56:b7:fd:9d:a6:f1:cc:31:43:07:50"]
-      - attach_workspace:
-          at: ~/
+          fingerprints: 
+            - "5a:d5:48:85:14:56:b7:fd:9d:a6:f1:cc:31:43:07:50"
       - run:
           name: Install dependencies
           working_directory: ./.circleci/ansible
           command: |
             apk add --update ansible
             ansible --version
+      - attach_workspace:
+          at: ~/
       - run:
           name: Configure server
           working_directory: ./.circleci/ansible
