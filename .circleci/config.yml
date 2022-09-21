@@ -165,18 +165,26 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints: ["5a:d5:48:85:14:56:b7:fd:9d:a6:f1:cc:31:43:07:50"]
+      - attach_workspace:
+          at: ~/
       - run:
           name: Install dependencies
           working_directory: ./.circleci/ansible
           command: |
-            apk add --update ansible
+            apk add --update --no-cache tar gzip ansible aws-cli
             ansible --version
       - run:
           name: Configure server
           working_directory: ./.circleci/ansible
           command: |
+            pwd &&
+            ls -la
             cat inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/backend
       # - destroy-environment
 
 #   run-migrations:
