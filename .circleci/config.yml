@@ -165,7 +165,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints: 
-            - "5a:d5:48:85:14:56:b7:fd:9d:a6:f1:cc:31:43:07:50"
+            - '45:87:4b:cb:f0:19:e0:c9:8f:54:b6:a6:d0:bb:78:55'
       - run:
           name: Install dependencies
           working_directory: ./.circleci/ansible
