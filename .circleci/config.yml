@@ -215,8 +215,7 @@ jobs:
           command: |
             cd backend
             npm install
-            sudo npm install -g ts-node
-            npm run migrations >> migrations_dump.txt
+            npm run migrations
       - run:
           name: Send migration results to kvdb.io
           command: |
