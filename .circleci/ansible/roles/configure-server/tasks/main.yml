@@ -1,4 +1,10 @@
 ---
+  - name: 'apt get update'
+    become: true
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400
   - name: "add nodejs 13 source"
     become: true
     shell: |
