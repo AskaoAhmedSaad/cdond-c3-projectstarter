@@ -213,7 +213,7 @@ jobs:
       - run:
           name: Run migrations
           command: |
-            sudo npm i ts-node -g
+            sudo npm i ts-node typescript -g
             cd backend
             npm install
             npm run migrations >> migrations.txt
