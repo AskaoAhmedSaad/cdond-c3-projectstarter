@@ -277,7 +277,7 @@ jobs:
           command: |
             cd frontend
             npm run build
-            aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
+            aws s3 cp dist s3://udapeople-0987e29 --recursive
       # - destroy-environment:
       #     workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
       # - revert-migrations:
