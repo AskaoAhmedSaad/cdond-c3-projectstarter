@@ -339,14 +339,11 @@ jobs:
       - install-awscli
       - install-nodejs
       - run:
-          name: Get backend url
+          name: Backend smoke test.
           command: |
             BACKEND_PUBLIC_IP=$(aws ec2 describe-instances  --query 'Reservations[*].Instances[*].PublicIpAddress' --filters "Name=tag:project,Values=udapeople-backend-62811e6" --output text)
             export API_URL="http://${BACKEND_PUBLIC_IP}:3030"
             echo "${API_URL}"
-      - run:
-          name: Backend smoke test.
-          command: |
             if curl -s $API_URL/api/status | grep "ok"
             then
               exit 0
